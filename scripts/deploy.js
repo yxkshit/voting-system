@@ -9,7 +9,7 @@ async function main() {
 
   const address = await voting.getAddress();
   console.log(`Voting deployed to: ${address}`);
-  console.log("\nCopy this address into frontend/app.js CONTRACT_ADDRESS:");
+  console.log("\nCONTRACT_ADDRESS:");
   console.log(address);
 }
 

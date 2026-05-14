@@ -1,6 +1,3 @@
-// =============================================
-// CONFIGURATION — update after deploying
-// =============================================
 const CONTRACT_ADDRESS = "0x80E99ab40370DEF535EF3Cb0250FC00BAEBa9716";
 
 const ABI = [
@@ -27,9 +24,6 @@ let provider, signer, contract;
 let currentAccount = null;
 let isAdmin = false;
 
-// =============================================
-// INIT
-// =============================================
 window.addEventListener("load", async () => {
   if (typeof window.ethereum === "undefined") {
     showError("MetaMask not detected. Please install MetaMask.");
@@ -50,9 +44,6 @@ async function handleAccountChange(accounts) {
   }
 }
 
-// =============================================
-// CONNECT WALLET
-// =============================================
 async function connectWallet() {
   try {
     showLoading("Connecting wallet...");
@@ -89,9 +80,6 @@ async function initContract() {
   }
 }
 
-// =============================================
-// REFRESH UI
-// =============================================
 async function refreshAll() {
   await loadStatus();
   await loadCandidates();
@@ -182,9 +170,6 @@ async function loadWinner() {
   }
 }
 
-// =============================================
-// VOTER ACTIONS
-// =============================================
 async function castVote(candidateId) {
   try {
     showLoading("Casting vote...");
@@ -199,9 +184,6 @@ async function castVote(candidateId) {
   }
 }
 
-// =============================================
-// ADMIN ACTIONS
-// =============================================
 async function addCandidate() {
   const name = document.getElementById("candName").value.trim();
   const party = document.getElementById("candParty").value.trim();
@@ -268,9 +250,6 @@ async function endVoting() {
   }
 }
 
-// =============================================
-// HELPERS
-// =============================================
 function parseError(err) {
   if (err.reason) return err.reason;
   if (err.message?.includes("Already voted")) return "You already voted.";
