@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blockchain Voting System</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="hidden overlay">
+  <div class="spinner"></div>
+  <p id="loadingMsg">Loading...</p>
+</div>
+
+<!-- Notification -->
+<div id="notification" class="notification hidden"></div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">⛓</span>
+      <span>BlockVote</span>
+    </div>
+    <div class="header-right">
+      <span id="adminBadge" class="tag purple hidden">Admin</span>
+      <span id="walletAddress" class="wallet-addr">Not Connected</span>
+      <button id="connectBtn" onclick="connectWallet()">Connect Wallet</button>
+    </div>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Secure Digital Voting</h1>
+    <p>Decentralized · Transparent · Tamper-Proof</p>
+  </section>
+
+  <!-- Content (hidden until connected) -->
+  <div id="mainContent" class="hidden">
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div class="stat">
+        <span class="stat-label">Voting Status</span>
+        <span id="votingStatus" class="status-badge inactive">INACTIVE</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Total Votes</span>
+        <span id="totalVotes" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Your Registration</span>
+        <span id="regStatus" class="tag red">Not Registered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Your Vote</span>
+        <span id="voteStatus" class="tag orange">Not Voted</span>
+      </div>
+      <div class="stat">
+        <button class="refresh-btn" onclick="refreshAll()">↻ Refresh</button>
+      </div>
+    </div>
+
+    <!-- Winner Banner -->
+    <div id="winnerSection" class="hidden winner-banner">
+      <h2>🏆 Election Winner</h2>
+      <div class="winner-info">
+        <span id="winnerName" class="winner-name"></span>
+        <span id="winnerParty" class="winner-party"></span>
+        <span id="winnerVotes" class="winner-votes"></span> votes
+      </div>
+    </div>
+
+    <!-- Candidates -->
+    <section class="section">
+      <h2>Candidates</h2>
+      <div id="candidateList" class="candidate-grid"></div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="adminPanel" class="section hidden admin-section">
+      <h2>Admin Panel</h2>
+
+      <div class="admin-grid">
+
+        <!-- Add Candidate -->
+        <div class="admin-card">
+          <h3>Add Candidate</h3>
+          <input id="candName" type="text" placeholder="Candidate Name" />
+          <input id="candParty" type="text" placeholder="Party Name" />
+          <button onclick="addCandidate()">Add Candidate</button>
+        </div>
+
+        <!-- Register Voter -->
+        <div class="admin-card">
+          <h3>Register Voter</h3>
+          <input id="voterAddr" type="text" placeholder="Voter Wallet Address (0x...)" />
+          <button onclick="registerVoter()">Register</button>
+        </div>
+
+        <!-- Voting Control -->
+        <div class="admin-card">
+          <h3>Voting Control</h3>
+          <div class="btn-row">
+            <button id="startBtn" class="green-btn" onclick="startVoting()">Start Voting</button>
+            <button id="endBtn" class="red-btn" onclick="endVoting()" disabled>End Voting</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p>Blockchain-Based Secure Digital Voting System &mdash; GGSIPU &mdash; PC-260</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
