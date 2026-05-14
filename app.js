@@ -1,7 +1,7 @@
 // =============================================
 // CONFIGURATION — update after deploying
 // =============================================
-const CONTRACT_ADDRESS = "0x35E19B4c50df774c32A847FaB8946DE749c32CD1";
+const CONTRACT_ADDRESS = "0x80E99ab40370DEF535EF3Cb0250FC00BAEBa9716";
 
 const ABI = [
   "function candidateCount() view returns (uint)",
